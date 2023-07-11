@@ -90,7 +90,7 @@ def get_df(file):
         df = pd.read_pickle(file)
     return df
 def main():
-    st.title('Explore a dataset')
+    st.title('Technicus application')
     st.write('A general purpose data exploration app')
 
     file = st.file_uploader("Upload file", type=['csv' 
