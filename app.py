@@ -3,6 +3,14 @@ import pandas as pd
 import pickle
 import io
 import base64
+import ydata_profiling
+
+from streamlit_pandas_profiling import st_profile_report
+
+
+def profile_report(df):
+    pr = df.profile_report()
+    st_profile_report(pr)
 
 def explore(df):
   # DATA
@@ -100,12 +108,13 @@ def main():
         st.write("Upload a .csv or .xlsx file to get started")
         return
     df = get_df(file)
-    task = st.sidebar.radio('Task', ['Explore', 'Transform'], 0)
+    task = st.sidebar.radio('Task', ['Explore', 'Transform','Profile Report'], 0)
     if task == 'Explore':
         explore(df)
-    else:
+    elif task == 'Transform':
         transform(df)
-
+    else: 
+        profile_report(df)
     
 
 main()
